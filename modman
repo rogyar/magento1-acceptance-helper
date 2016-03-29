@@ -1,2 +1,2 @@
-code    app/code/local/Atwix/AcceptanceHelper/
-Atwix_AcceptanceHelper.xml  app/etc/modules/Atwix_AcceptanceHelper.xml
+app/code/local/Atwix/AcceptanceHelper/    app/code/local/Atwix/AcceptanceHelper/
+app/etc/modules/Atwix_AcceptanceHelper.xml  app/etc/modules/Atwix_AcceptanceHelper.xml
