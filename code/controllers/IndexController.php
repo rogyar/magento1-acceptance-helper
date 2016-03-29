@@ -10,10 +10,14 @@ class Atwix_AcceptanceHelper_IndexController extends Mage_Core_Controller_Front_
     /** @var  Atwix_AcceptanceHelper_Helper_Data */
     protected $generalHelper;
 
+    /** @var  Atwix_AcceptanceHelper_Helper_Product */
+    protected $productHelper;
+
 
     public function _construct()
     {
         $this->generalHelper = Mage::helper('atwix_acceptancehelper');
+        $this->productHelper = Mage::helper('atwix_acceptancehelper/product');
         parent::_construct();
     }
 
@@ -44,5 +48,18 @@ class Atwix_AcceptanceHelper_IndexController extends Mage_Core_Controller_Front_
 
         $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
         return $this;
+    }
+
+    /**
+     * Initialises new test product creation
+     */
+    public function createproductAction()
+    {
+        if (($opStatus = $this->productHelper->createProduct()) === true) {
+            $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
+        }
+        if ($opStatus < 0) {
+            $this->getResponse()->setBody(sprintf(self::FAIL_MESSAGE, 'The product already exists'));
+        }
     }
 }
