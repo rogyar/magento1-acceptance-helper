@@ -35,7 +35,6 @@ class Atwix_AcceptanceHelper_Helper_Product extends Mage_Core_Helper_Abstract
     public function createProduct()
     {
         Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
-
         /** @var Mage_Catalog_Model_Product $product */
         $product = Mage::getModel('catalog/product');
 
@@ -47,5 +46,17 @@ class Atwix_AcceptanceHelper_Helper_Product extends Mage_Core_Helper_Abstract
         $product->save();
 
         return true;
+    }
+    
+    public function removeProduct()
+    {
+        Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+
+        /** @var Mage_Catalog_Model_Product $product */
+        $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $this->productDetails['sku']);
+
+        if ($product) {
+            $product->delete();
+        }
     }
 }

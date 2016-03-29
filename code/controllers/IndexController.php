@@ -62,4 +62,13 @@ class Atwix_AcceptanceHelper_IndexController extends Mage_Core_Controller_Front_
             $this->getResponse()->setBody(sprintf(self::FAIL_MESSAGE, 'The product already exists'));
         }
     }
+
+    /**
+     * Initialises test product removing
+     */
+    public function removeproductAction()
+    {
+        $this->productHelper->removeProduct();
+        $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
+    }
 }
