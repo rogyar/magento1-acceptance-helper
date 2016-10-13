@@ -7,6 +7,7 @@ The main extension purpose is to provide an ability to execute some platform ope
 - Create test product
 - Remove test product
 - Remove customer by email
+- Remove subscriber by email
 TBM
 
 ## Installation
