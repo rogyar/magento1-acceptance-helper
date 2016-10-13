@@ -13,7 +13,7 @@ class Atwix_AcceptanceHelper_Helper_Data extends Mage_Core_Helper_Abstract
 
     /**
      * Attempts to find customer by email. If customer has been found - removes it
-     * 
+     *
      * @param string $customerEmail
      * @return bool
      * @throws Exception
@@ -27,7 +27,29 @@ class Atwix_AcceptanceHelper_Helper_Data extends Mage_Core_Helper_Abstract
             Mage::register('isSecureArea', true);
             $customer->delete();
             return true;
-            
+
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Attempts to find subscriber by email. If subscriber has been found - removes it
+     *
+     * @param string $subscriberEmail
+     * @return bool
+     * @throws Exception
+     */
+    public function removeSubscriber($subscriberEmail)
+    {
+        $subscriber = Mage::getModel('newsletter/subscriber');
+        $subscriber->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
+        $subscriber->loadByEmail($subscriberEmail);
+        if ($subscriber->getId()) {
+            Mage::register('isSecureArea', true);
+            $subscriber->delete();
+            return true;
+
         } else {
             return false;
         }
