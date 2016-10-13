@@ -71,4 +71,24 @@ class Atwix_AcceptanceHelper_IndexController extends Mage_Core_Controller_Front_
         $this->productHelper->removeProduct();
         $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
     }
+    
+    /**
+     * Initialises subscriber removing by provided email
+     */
+    public function removesubscribtionAction()
+    {
+        $subscriberEmail = $this->getRequest()->getParam('email');
+        if (empty($subscriberEmail)) {
+            $this->getResponse()->setBody(sprintf(self::FAIL_MESSAGE, 'No customer email specified'));
+            return $this;
+        }
+
+        if (!$this->generalHelper->removeSubscriber($subscriberEmail)) {
+            $this->getResponse()->setBody(sprintf(self::FAIL_MESSAGE, 'Customer with provided email cannot be found'));
+            return $this;
+        }
+
+        $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
+        return $this;
+    }
 }
