@@ -54,4 +54,27 @@ class Atwix_AcceptanceHelper_Helper_Data extends Mage_Core_Helper_Abstract
             return false;
         }
     }
+
+    /**
+     * Attempts to find order by number. If order has been found - removes it
+     *
+     * @param $orderNumber
+     * @return bool
+     */
+    public function removeOrderByNumber($orderNumber)
+    {
+
+        $order = Mage::getModel('sales/order');
+        $order->loadByIncrementId($orderNumber);
+        if($order->getID())
+        {
+            Mage::register('isSecureArea', true);
+            $order->delete();
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
 }

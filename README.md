@@ -8,6 +8,7 @@ The main extension purpose is to provide an ability to execute some platform ope
 - Remove test product
 - Remove customer by email
 - Remove subscriber by email
+- Remove order by number
 TBM
 
 ## Installation
@@ -50,3 +51,8 @@ This command will remove product created by the "Add Product" command.
 http://your.site.com/index.php/acceptancehelper/index/removesubscribtion/email/customer%40email.com
 ```
 `customer%40email.com` here is an "url_encoded" email string.
+### Remove Order
+```
+http://your.site.com//index.php/acceptancehelper/index/removeorder/order/orderNumber
+```
+`orderNumber` here is an order number.

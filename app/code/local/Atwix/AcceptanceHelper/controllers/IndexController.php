@@ -91,4 +91,24 @@ class Atwix_AcceptanceHelper_IndexController extends Mage_Core_Controller_Front_
         $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
         return $this;
     }
+
+    /**
+     * Initialises order removing by provided number
+     */
+    public function removeorderAction()
+    {
+        $orderNumber = $this->getRequest()->getParam('order');
+        if (empty($orderNumber)) {
+            $this->getResponse()->setBody(sprintf(self::FAIL_MESSAGE, 'No order number specified'));
+            return $this;
+        }
+
+        if (!$this->generalHelper->removeOrderByNumber($orderNumber)) {
+            $this->getResponse()->setBody(sprintf(self::FAIL_MESSAGE, 'Order with  ' .$orderNumber. ' number cannot be found'));
+            return $this;
+        }
+
+        $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
+        return $this;
+    }
 }
