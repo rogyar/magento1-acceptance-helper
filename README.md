@@ -7,6 +7,7 @@ The main extension purpose is to provide an ability to execute some platform ope
 - Create test product
 - Remove test product
 - Remove customer by email
+- Remove subscriber by email
 TBM
 
 ## Installation
@@ -44,3 +45,13 @@ Product details can be adjusted directly in `Helper/Product.php`.
 http://your.site.com/index.php/acceptancehelper/index/removeproduct
 ```
 This command will remove product created by the "Add Product" command.
+### Remove Subscriber
+```
+http://your.site.com/index.php/acceptancehelper/index/removesubscribtion/email/customer%40email.com
+```
+`customer%40email.com` here is an "url_encoded" email string.
+
+### Reindex each index
+```
+http://your.site.com/index.php/acceptancehelper/index/reindex
+```

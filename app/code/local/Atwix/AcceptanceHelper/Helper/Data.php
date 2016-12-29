@@ -32,4 +32,37 @@ class Atwix_AcceptanceHelper_Helper_Data extends Mage_Core_Helper_Abstract
             return false;
         }
     }
+
+    /**
+     * Attempts to find subscriber by email. If subscriber has been found - removes it
+     *
+     * @param string $subscriberEmail
+     * @return bool
+     * @throws Exception
+     */
+    public function removeSubscriber($subscriberEmail)
+    {
+        $subscriber = Mage::getModel('newsletter/subscriber');
+        $subscriber->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
+        $subscriber->loadByEmail($subscriberEmail);
+        if ($subscriber->getId()) {
+            Mage::register('isSecureArea', true);
+            $subscriber->delete();
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Reindex each index
+     */
+    public function reindexAll(){
+        $indexCollection = Mage::getModel('index/process')->getCollection();
+        foreach ($indexCollection as $index) {
+            $index->reindexAll();
+        }
+    }
+
 }
