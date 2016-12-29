@@ -91,4 +91,13 @@ class Atwix_AcceptanceHelper_IndexController extends Mage_Core_Controller_Front_
         $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
         return $this;
     }
+
+    /**
+     * Initialises reindexing
+     */
+    public function reindexAction()
+    {
+        $this->generalHelper->reindexAll();
+        $this->getResponse()->setBody(self::SUCCESS_MESSAGE);
+    }
 }

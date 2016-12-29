@@ -54,4 +54,15 @@ class Atwix_AcceptanceHelper_Helper_Data extends Mage_Core_Helper_Abstract
             return false;
         }
     }
+
+    /**
+     * Reindex each index
+     */
+    public function reindexAll(){
+        $indexCollection = Mage::getModel('index/process')->getCollection();
+        foreach ($indexCollection as $index) {
+            $index->reindexAll();
+        }
+    }
+
 }
