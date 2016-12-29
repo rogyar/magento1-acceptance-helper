@@ -50,3 +50,8 @@ This command will remove product created by the "Add Product" command.
 http://your.site.com/index.php/acceptancehelper/index/removesubscribtion/email/customer%40email.com
 ```
 `customer%40email.com` here is an "url_encoded" email string.
+
+### Reindex each index
+```
+http://your.site.com/index.php/acceptancehelper/index/reindex
+```
